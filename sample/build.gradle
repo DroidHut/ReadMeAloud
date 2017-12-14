@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
+
+android {
+
+
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
+
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        applicationId "com.folioreader.android.sample"
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
+        minSdkVersion Integer.parseInt(project.ANDROID_MIN_SDK)
+        targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
+/*
+=======
+    applicationId "comfolioreader.android.sample"
+    versionCode 1
+    versionName "1.0"
+    minSdkVersion 16
+    targetSdkVersion 25
+>>>>>>> 9b94e7613b9edc8ba39655236775c3bca53064d6
+*/
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['res']
+        }
+        test {
+            java.srcDirs = ['src/test/java']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile project(':folioreader')
+    compile 'com.android.support:appcompat-v7:26.0.1'
+
+
+}
